@@ -3,16 +3,27 @@ import string
 
 
 def Generate_Password():
+    special_charcter = ''
+    digits = ''
     pass_length = random.randint(8, 16)
-    print("Length: ", pass_length, "\n")
-    letters = random.choices(string.ascii_letters, k=pass_length-2)
-    special_charcter = random.choice(string.punctuation)
-    digits = (random.randint(10, 100))
+    Number_of_letters = pass_length
+    print("Password Length: ", pass_length, "\n")
+    print("Do you want to Include Numbers in your Password?")
+    a = str(input("Type Yes or No ---> "))
+    if (a == "Yes"):
+        digits = (random.randint(10, 100))
+        Number_of_letters -= 2
+    print("Do you want to Include Spcial Charcaters in your Password?")
+    b = str(input("Type Yes or No ---> "))
+    if (b == "Yes"):
+        special_charcter = random.choice(string.punctuation)
+        Number_of_letters -= 1
+    letters = random.choices(string.ascii_letters, k=Number_of_letters)
     password = ''.join(letters) + special_charcter + str(digits)
-    return password 
+    return password
 
 
-print("Your Password Details:")
-print("--------------------------\n")
+print("Lets create a Password for You!")
+print("----------------------------------------------------\n")
 print("Password: ", Generate_Password())
-print("--------------------------\n")
+print("----------------------------------------------------\n")
